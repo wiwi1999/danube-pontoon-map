@@ -1,119 +1,117 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cooling off on the Danube</title>
-
+  <title>Map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <link rel="stylesheet" href="css/style.css">
 
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <style>
+    #map { height: 100vh; }
+  </style>
 </head>
 
 <body>
 
+  <!-- Title section -->
   <div id="title">
     <h2>Cooling off on the Danube</h2>
-
-    <select id="shadeFilter">
-      <option value="all">All shade levels</option>
-      <option value="none">No shade</option>
-      <option value="partial">Partial shade</option>
-      <option value="good">Good shade</option>
-    </select>
   </div>
 
   <div id="map"></div>
 
   <script>
-    let allData;
-    let geoLayer;
+  // Create map
+  const map = L.map('map').setView([48.23, 16.45], 12);
 
-    const map = L.map('map').setView([48.23, 16.45], 12);
+  // Add base tile layer
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
 
-    const osm = L.tileLayer(
-      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      {
-        attribution: "&copy; OpenStreetMap contributors"
-      }
-    ).addTo(map);
+  // Base map 1: OpenStreetMap
+  const osm = L.tileLayer(
+    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {
+      attribution: "&copy; OpenStreetMap contributors"
+    }
+  );
 
-    const cartoLight = L.tileLayer(
-      "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-      {
-        attribution: "&copy; OpenStreetMap & CARTO"
-      }
-    );
+  // Base map 2: Carto Light
+  const cartoLight = L.tileLayer(
+    "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+    {
+      attribution: "&copy; OpenStreetMap & CARTO"
+    }
+  );
 
-    const esriSat = L.tileLayer(
-      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-      {
-        attribution: "Tiles &copy; Esri"
-      }
-    );
+  // Base map 3: ESRI Satellite
+  const esriSat = L.tileLayer(
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    {
+      attribution: "Tiles &copy; Esri"
+    }
+  );
 
-    const baseMaps = {
-      "OpenStreetMap": osm,
-      "Carto Light": cartoLight,
-      "ESRI Satellite": esriSat
-    };
+  const baseMaps = {
+    "OpenStreetMap": osm,
+    "Carto Light": cartoLight,
+    "ESRI Satellite": esriSat
+  };
 
-    L.control.layers(baseMaps).addTo(map);
+  L.control.layers(baseMaps).addTo(map);
 
-    fetch("data/pontoons.geojson")
-      .then(response => response.json())
-      .then(data => {
-        allData = data;
-        drawLayer(allData);
-      });
+  let allData;
+  let geoLayer;
 
-    function drawLayer(data) {
-      if (geoLayer) {
-        geoLayer.remove();
-      }
+  fetch("pontoons.geojson")
+    .then(r => r.json())
+    .then(data => {
+      allData = data;
 
-      geoLayer = L.geoJSON(data, {
-        pointToLayer: function (feature, latlng) {
-          return L.circleMarker(latlng, {
-            radius: 6,
-            color: "green",
-            fillColor: "green",
-            fillOpacity: 0.8
-          });
-        },
+      drawLayer(allData); // initial render
+    });
 
-        onEachFeature: function (feature, layer) {
-          layer.bindPopup(`
-            <b>Pontoon</b><br>
-            Chill area: ${feature.properties.CHILL_AREA || "unknown"}<br>
-            Shade: ${feature.properties.SHADE || "unknown"}<br>
-            Lawn: ${feature.properties.LAWN || "unknown"}<br>
-            Notes: ${feature.properties.NOTES || "none"}
-          `);
-        }
-      }).addTo(map);
+  function drawLayer(data) {
 
-      if (geoLayer.getBounds().isValid()) {
-        map.fitBounds(geoLayer.getBounds());
-      }
+    // remove old layer if it exists
+    if (geoLayer) {
+      geoLayer.remove();
     }
 
-    document.getElementById("shadeFilter").addEventListener("change", function () {
-      const value = this.value;
-
-      if (value === "all") {
-        drawLayer(allData);
-        return;
+    geoLayer = L.geoJSON(data, {
+      pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, {
+          radius: 6,
+          color: "green",
+          fillOpacity: 0.8
+        });
+      },
+      onEachFeature: function (feature, layer) {
+        layer.bindPopup(`
+          <b>Pontoon</b><br>
+          Chill: ${feature.properties.CHILL_AREA}<br>
+          Shade: ${feature.properties.SHADE}<br>
+          Lawn: ${feature.properties.LAWN}<br>
+          Notes: ${feature.properties.NOTES}
+        `);
       }
+    }).addTo(map);
 
-      const filtered = {
-        type: "FeatureCollection",
-        features: allData.features.filter(feature =>
-          feature.properties.SHADE === value
-        )
-      };
+    map.fitBounds(geoLayer.getBounds());
+  }
 
-      drawLayer(filtered);
-    });
+  function filterShade(value) {
+
+    const filtered = {
+      type: "FeatureCollection",
+      features: allData.features.filter(f =>
+        f.properties.SHADE === value
+      )
+    };
+
+    drawLayer(filtered);
+  }
   </script>
 
 </body>
