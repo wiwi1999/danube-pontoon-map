@@ -1,0 +1,12 @@
+- Titel
+- Beschreibung
+- geografischer Raum
+- Datenquellen
+- was ihr selbst ergänzt habt
+- Layer
+- Attribute
+- Erhebungsmethode
+- Distanzberechnung
+- Limitationen
+- Lizenz
+- Autor:innen
