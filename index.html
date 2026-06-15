@@ -99,15 +99,20 @@ function drawLayer(data) {
         fillOpacity: 0.8
       });
     },
-    onEachFeature: function (feature, layer) {
-      layer.bindPopup(`
-        <b>Pontoon</b><br>
-        Chill: ${feature.properties.CHILL_AREA}<br>
-        Shade: ${feature.properties.SHADE}<br>
-        Lawn: ${feature.properties.LAWN}<br>
-        Notes: ${feature.properties.NOTES}
-      `);
-    }
+onEachFeature: function (feature, layer) {
+  const fid = feature.properties.FID;
+  const photoPath = `pictures/${fid}.jpg`;
+
+  layer.bindPopup(`
+    <b>Pontoon</b><br>
+    FID: ${fid}<br>
+    Chill: ${feature.properties.CHILL_AREA}<br>
+    Shade: ${feature.properties.SHADE}<br>
+    Lawn: ${feature.properties.LAWN}<br>
+    Notes: ${feature.properties.NOTES}<br><br>
+    <img src="${photoPath}" width="220">
+  `);
+}
   }).addTo(map);
 
   map.fitBounds(geoLayer.getBounds());
