@@ -11,7 +11,6 @@ Interactive web map: [insert GitHub Pages URL]
 ## Data
 
 - `data/pontoons.geojson`
-- `data/chill_areas.geojson`
 - `data/facilities.geojson`
 
 ## Main Added Attributes
