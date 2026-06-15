@@ -1,0 +1,114 @@
+/* Remove default margin and make the page use the full browser height */
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+/* Title section */
+#title {
+  height: 60px;
+  padding: 15px;
+  box-sizing: border-box;
+
+  font-family: Arial, sans-serif;
+
+  display: flex;
+  align-items: center;
+
+  /* TASK 5: Change the background color of the title bar */
+  background-color: rgb(125, 125, 160);
+
+  /* TASK 6: Change the title font color */
+  color: rgb(100, 250, 150);
+}
+
+#title-logo {
+  height: 40px;
+  margin-left: auto;
+}
+
+/* Map section */
+#map {
+  height: calc(100% - 60px);
+}
+
+/* TASK 10: paste the code from the Code Cheat Sheet
+to style the legend */
+
+/* Legend */
+.legend {
+  background: white;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+
+.legend-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.legend-content {
+  display: flex;
+  align-items: center;
+}
+
+.legend-y-title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  margin-right: 6px;
+  font-size: 13px;
+}
+
+.legend-y-labels {
+  height: 82px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 8px;
+  font-size: 13px;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 25px);
+  grid-template-rows: repeat(3, 25px);
+  gap: 2px;
+}
+
+.legend-grid div {
+  width: 25px;
+  height: 25px;
+  border: 1px solid white;
+}
+
+.legend-x-labels {
+  width: 79px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 55px;
+  margin-top: 2px;
+  font-size: 13px;
+}
+
+.legend-x-title {
+  margin-left: 20px;
+  margin-top: 2px;
+  font-size: 13px;
+}
+
+.legend-nodata {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  margin-left: 43px;
+  font-size: 13px;
+}
+
+.legend-nodata-box {
+  width: 18px;
+  height: 18px;
+  background: #cccccc;
+  border: 1px solid white;
+  margin-right: 6px;
+}
