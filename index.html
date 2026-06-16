@@ -74,7 +74,7 @@ L.control.layers(baseMaps).addTo(map);
 let allData;
 let geoLayer;
 
-fetch("data/pontoons.geojson")
+fetch("Pontoons.geojson")
   .then(r => r.json())
   .then(data => {
     allData = data;
@@ -84,13 +84,15 @@ fetch("data/pontoons.geojson")
     setupFilters();
   });
 
+
+
 function drawLayer(data) {
 
   // remove old layer if it exists
   if (geoLayer) {
     geoLayer.remove();
   }
-
+  
   geoLayer = L.geoJSON(data, {
     pointToLayer: function (feature, latlng) {
       return L.circleMarker(latlng, {
@@ -99,20 +101,18 @@ function drawLayer(data) {
         fillOpacity: 0.8
       });
     },
-onEachFeature: function (feature, layer) {
-  const fid = feature.properties.FID;
-  const photoPath = `pictures/${fid}.jpg`;
-
-  layer.bindPopup(`
-    <b>Pontoon</b><br>
-    FID: ${fid}<br>
-    Chill: ${feature.properties.CHILL_AREA}<br>
-    Shade: ${feature.properties.SHADE}<br>
-    Lawn: ${feature.properties.LAWN}<br>
-    Notes: ${feature.properties.NOTES}<br><br>
-    <img src="${photoPath}" width="220">
-  `);
-}
+    
+    onEachFeature: function (feature, layer) {
+      layer.bindPopup(`
+        <b>Pontoon ${feature.properties.Index}</b><br>
+        Chill: ${feature.properties.CHILL_AREA}sqm<br>
+        Shade: ${feature.properties.SHADE_TEXT}<br>
+        Lawn: ${feature.properties.LAWN_TEXT}<br>
+        Distance to First Aid Station: ${feature.properties.DIST_FIRST}m<br>
+        Distance to Restaurant/Bistro: ${feature.properties.DIST_FOOD}m<br>
+        Notes: ${feature.properties.NOTES}
+      `);
+    }
   }).addTo(map);
 
   map.fitBounds(geoLayer.getBounds());
@@ -165,18 +165,18 @@ filterControl.onAdd = function () {
 
     <label>
       <input type="checkbox" id="fkkState">
-      noFKK
+      Nudism Area
     </label><br><br>
 
     <label>
-      Min Chill Area: <span id="chillAreaLabel">100</span> sqm
+      Min Chill Area: <span id="chillAreaLabel">300</span> sqm
     </label><br>
 
     <input type="range"
            id="chillAreaSlider"
            min="0"
-           max="100"
-           value="100"
+           max="300"
+           value="300"
            step="1">
   `;
 
@@ -189,6 +189,7 @@ filterControl.onAdd = function () {
 
 // Unified Filters
 function setupFilters() {
+
 
   const shadeBox = document.getElementById("shadeYes");
   const lawnBox = document.getElementById("lawnState");
@@ -213,15 +214,15 @@ function setupFilters() {
           !lawnBox.checked || f.properties.LAWN === 0;
 
         const fkkOK =
-          !fkkBox.checked || f.properties.FKK === 0;
+          !fkkBox.checked || f.properties.NUDISM_ARE === "No";
 
         const chillAreaValue =
           Number(f.properties.CHILL_AREA);
 
         const chillAreaOK =
-          chillAreaValue != chillArea;
+          chillAreaValue <= chillArea;
 
-        return shadeOK && lawnOK && chillAreaOK && fkkOK;
+        return shadeOK && fkkOK && lawnOK && chillAreaOK ;
       })
     };
 
@@ -230,10 +231,12 @@ function setupFilters() {
 
   shadeBox.addEventListener("change", applyFilters);
   lawnBox.addEventListener("change", applyFilters);
+  fkkBox.addEventListener("change", applyFilters);
   slider.addEventListener("input", applyFilters);
 }
 
 filterControl.addTo(map);
+
 
   </script>
 
