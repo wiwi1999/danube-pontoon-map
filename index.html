@@ -221,7 +221,7 @@ function setupFilters() {
           Number(f.properties.CHILL_AREA);
 
         const chillAreaOK =
-          chillAreaValue <= chillArea;
+          chillAreaValue >= chillArea;
 
         return shadeOK && fkkOK && lawnOK && chillAreaOK ;
       })
