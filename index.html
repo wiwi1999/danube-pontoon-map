@@ -113,7 +113,8 @@ onEachFeature: function (feature, layer) {
     Distance to Restaurant/Bistro: ${feature.properties.DIST_FOOD} m<br>
     Notes: ${feature.properties.NOTES}<br><br>
     <img src="${photoPath}" width="220">
-  `);
+  `{  autoPan: true,
+  autoPanPadding: [20, 20]});
 }
   }).addTo(map);
 
