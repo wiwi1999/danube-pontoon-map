@@ -6,7 +6,7 @@ The dataset is based on the open government dataset "Donauinsel Freizeiteinricht
 
 ## Web Map
 
-Interactive web map: [insert GitHub Pages URL]
+Interactive web map: https://wiwi1999.github.io/danube-pontoon-map/
 
 ## Data
 
