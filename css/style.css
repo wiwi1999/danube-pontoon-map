@@ -4,6 +4,10 @@ html, body {
   height: 100%;
 }
 
+#map {
+  height: calc(100vh - 60px);
+}
+
 /* Title section */
 #title {
   height: 60px;
