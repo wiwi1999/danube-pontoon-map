@@ -48,6 +48,25 @@ GIP data is provided by **ÖVDAT** and is available under the **Creative Commons
 
 The final dataset combines official open data, field observations, and spatial analysis results for use in an interactive Leaflet web map.
 
+## Attribute Description
+
+The following table describes the attributes stored in the project GeoJSON dataset.
+
+| Field Name      | Type                     | Description                                                                                                                             |
+| --------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `Index`         | Integer                  | Unique identifier for each pontoon or location. Also used to link photos to map features.                                               |
+| `CHILL_AREA`    | Number                   | Estimated available chill or resting area in square meters.                                                                             |
+| `SHADE`         | Boolean coded as integer | Shade availability. `0` = no shade, `1` = shade available.                                                                              |
+| `RASEN_ZUSTAND` | Categorical integer      | Lawn or ground condition recorded during field collection. `1` = mowed, `2` = medium height, `3` = high grass, `4` = sand/soil.         |
+| `RASEN_DATUM`   | Date                     | Date when the lawn or ground condition was recorded. This field is used for documentation and does not necessarily appear in the popup. |
+| `NUDISM_ARE`    | Text                     | Indicates whether the location is within or near a nudism area.                                                                         |
+| `DIST_FIRST`    | Number                   | Distance to the nearest first aid station, measured in meters.                                                                          |
+| `DIST_FOOD`     | Number                   | Distance to the nearest restaurant or bistro, measured in meters.                                                                       |
+| `NOTES`         | Text                     | Additional observations or comments about the location.                                                                                 |
+
+The popup presents selected attributes in a more readable form, while the attribute table documents the actual structure of the dataset.
+
+
 ## Map Filters
 
 Users can filter the locations by the following criteria:
@@ -63,32 +82,22 @@ Users can filter the locations by the following criteria:
 
 Each popup contains the following information:
 
-## Attribute Description
+## Popup Information
 
-| Field Name | Type | Description |
-|---|---|---|
-| `Index` | Integer | Unique identifier for each pontoon or location. Also used to link photos to map features. |
-| `CHILL_AREA` | Number | Estimated available chill or resting area in square meters. |
-| `SHADE` | Boolean coded as integer | Shade availability. `0` = no shade, `1` = shade available. |
-| `RASEN_ZUSTAND` | Categorical integer | Lawn or ground condition recorded during field collection. `1` = mowed, `2` = medium height, `3` = high grass, `4` = sand/soil. |
-| `RASEN_DATUM` | Date | Date when the lawn or ground condition was recorded. |
-| `NUDISM_ARE` | Text | Indicates whether the location is within or near a nudism area. |
-| `DIST_FIRST` | Number | Distance to the nearest first aid station, measured in meters. |
-| `DIST_FOOD` | Number | Distance to the nearest restaurant or bistro, measured in meters. |
-| `NOTES` | Text | Additional observations or comments about the location. |
+Each popup shows a simplified, user-friendly version of selected dataset attributes.
 
-## Technologies Used
+| Popup Label                   | Based on Dataset Field | Description                                                                                            |
+| ----------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------ |
+| Pontoon                       | `Index`                | Unique number of the pontoon or location.                                                              |
+| Chill Area                    | `CHILL_AREA`           | Estimated available chill or resting area in square meters.                                            |
+| Shade                         | `SHADE`                | Shows whether shade is available. The dataset stores this as `0` = no shade and `1` = shade available. |
+| Lawn Condition                | `RASEN_ZUSTAND`        | Shows the field-recorded lawn or ground condition in a readable form.                                  |
+| Distance to First Aid Station | `DIST_FIRST`           | Approximate distance to the nearest first aid station, in meters.                                      |
+| Distance to Restaurant/Bistro | `DIST_FOOD`            | Approximate distance to the nearest restaurant or bistro, in meters.                                   |
+| Nudism Area                   | `NUDISM_ARE`           | Indicates whether the location is within or near a nudism area.                                        |
+| Notes                         | `NOTES`                | Additional observations about the location.                                                            |
+| Photo                         | `Index`                | Photos are linked to each location using the `Index` value.                                            
 
-This project was built with:
-
-* HTML
-* CSS
-* JavaScript
-* Leaflet.js
-* GeoJSON
-* OpenStreetMap
-* CARTO basemap
-* ESRI satellite basemap
 
 ## File Structure
 
