@@ -76,7 +76,7 @@ fetch("data/pontoons.geojson")
   .then(data => {
     allData = data;
 
-    drawLayer(allData); // initial render
+    drawLayer(allData, true); 
 
     setupFilters();
   });
