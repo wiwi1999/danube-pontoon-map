@@ -2,8 +2,10 @@
 <html>
 <head>
   <title>Map</title>
+
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -70,6 +72,11 @@
         drawLayer(allData, true);
 
         setupFilters();
+
+        // Fix blank map on first load
+        setTimeout(() => {
+          map.invalidateSize();
+        }, 100);
       });
 
     function drawLayer(data, fitMap) {
@@ -112,6 +119,11 @@
       if (fitMap === true) {
         map.fitBounds(geoLayer.getBounds());
       }
+
+      // Recalculate map size after drawing layer
+      setTimeout(() => {
+        map.invalidateSize();
+      }, 50);
     }
 
     // Link Box
@@ -172,6 +184,7 @@
 
       // Prevent map zoom when interacting with panel
       L.DomEvent.disableClickPropagation(div);
+      L.DomEvent.disableScrollPropagation(div);
 
       return div;
     };
@@ -225,6 +238,13 @@
       fkkBox.addEventListener("change", applyFilters);
       slider.addEventListener("input", applyFilters);
     }
+
+    // Extra safety: fix map size after full page load
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        map.invalidateSize();
+      }, 100);
+    });
   </script>
 
 </body>
