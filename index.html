@@ -84,6 +84,16 @@ fetch("data/pontoons.geojson")
     setupFilters();
   });
 
+fetch("data/pontoons.geojson")
+  .then(r => r.json())
+  .then(data => {
+    allData = data;
+
+    drawLayer(allData); // initial render
+
+    setupFilters();
+  });
+
 function drawLayer(data) {
 
   // remove old layer if it exists
@@ -100,24 +110,25 @@ function drawLayer(data) {
       });
     },
 
-onEachFeature: function (feature, layer) { 
-  const index = feature.properties.Index; 
-  const photoPath = pictures/${index}.jpg; 
-  
-  layer.bindPopup( <b>Pontoon ${feature.properties.Index}</b><br> 
-  Chill: ${feature.properties.CHILL_AREA} sqm<br> 
-  Shade: ${feature.properties.SHADE_TEXT}<br> 
-  Lawn: ${feature.properties.LAWN_TEXT}<br> 
-  Distance to First Aid Station: ${feature.properties.DIST_FIRST} m<br> 
-  Distance to Restaurant/Bistro: ${feature.properties.DIST_FOOD} m<br> 
-  Notes: ${feature.properties.NOTES}<br><br> 
-  <img src="${photoPath}" width="220"> 
-  , { 
-    autoPan: true, 
-    autoPanPadding: [20, 20] 
-  }); 
+    onEachFeature: function (feature, layer) {
+      const index = feature.properties.Index;
+      const photoPath = `pictures/${index}.jpg`;
 
-  }.addTo(map);
+      layer.bindPopup(`
+        <b>Pontoon ${feature.properties.Index}</b><br>
+        Chill: ${feature.properties.CHILL_AREA} sqm<br>
+        Shade: ${feature.properties.SHADE_TEXT}<br>
+        Lawn: ${feature.properties.LAWN_TEXT}<br>
+        Distance to First Aid Station: ${feature.properties.DIST_FIRST} m<br>
+        Distance to Restaurant/Bistro: ${feature.properties.DIST_FOOD} m<br>
+        Notes: ${feature.properties.NOTES}<br><br>
+        <img src="${photoPath}" width="220">
+      `, {
+        autoPan: true,
+        autoPanPadding: [20, 20]
+      });
+    }
+  }).addTo(map);
 
   map.fitBounds(geoLayer.getBounds());
 }
