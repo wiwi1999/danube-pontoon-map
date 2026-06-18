@@ -2,11 +2,13 @@
 <html>
 <head>
   <title>Map</title>
-
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    #map { height: 100vh; }
+  </style>
 </head>
 
 <body>
@@ -68,22 +70,16 @@
       .then(data => {
         allData = data;
 
-        // Fit map only once on first load
-        drawLayer(allData, true);
+        drawLayer(allData, true); // initial render with fitBounds
 
         setupFilters();
-
-        // Fix blank map on first load
-        setTimeout(() => {
-          map.invalidateSize();
-        }, 100);
       });
 
-    function drawLayer(data, fitMap) {
+    function drawLayer(data, fitMap = false) {
 
-      // Remove old layer if it exists
+      // remove old layer if it exists
       if (geoLayer) {
-        map.removeLayer(geoLayer);
+        geoLayer.remove();
       }
 
       geoLayer = L.geoJSON(data, {
@@ -115,18 +111,14 @@
         }
       }).addTo(map);
 
-      // Only move/zoom the map on first load
+      // IMPORTANT:
+      // only fit bounds on initial load, not after filtering
       if (fitMap === true) {
         map.fitBounds(geoLayer.getBounds());
       }
-
-      // Recalculate map size after drawing layer
-      setTimeout(() => {
-        map.invalidateSize();
-      }, 50);
     }
 
-    // Link Box
+    // Link Box 
     const linkControl = L.control({ position: "bottomright" });
 
     linkControl.onAdd = function () {
@@ -138,7 +130,7 @@
         </a>
       `;
 
-      // Prevent map interactions when clicking UI
+      // prevent map interactions when clicking UI
       L.DomEvent.disableClickPropagation(div);
 
       return div;
@@ -182,14 +174,11 @@
                step="1">
       `;
 
-      // Prevent map zoom when interacting with panel
+      // prevent map zoom when interacting with panel
       L.DomEvent.disableClickPropagation(div);
-      L.DomEvent.disableScrollPropagation(div);
 
       return div;
     };
-
-    filterControl.addTo(map);
 
     // Unified Filters
     function setupFilters() {
@@ -229,8 +218,7 @@
           })
         };
 
-        // Redraw filtered layer without moving the map
-        drawLayer(filtered, false);
+        drawLayer(filtered); // no fitBounds here, so no jumping
       }
 
       shadeBox.addEventListener("change", applyFilters);
@@ -239,12 +227,7 @@
       slider.addEventListener("input", applyFilters);
     }
 
-    // Extra safety: fix map size after full page load
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        map.invalidateSize();
-      }, 100);
-    });
+    filterControl.addTo(map);
   </script>
 
 </body>
