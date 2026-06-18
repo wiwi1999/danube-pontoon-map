@@ -84,16 +84,6 @@ fetch("data/pontoons.geojson")
     setupFilters();
   });
 
-fetch("data/pontoons.geojson")
-  .then(r => r.json())
-  .then(data => {
-    allData = data;
-
-    drawLayer(allData); // initial render
-
-    setupFilters();
-  });
-
 function drawLayer(data) {
 
   // remove old layer if it exists
@@ -132,7 +122,6 @@ function drawLayer(data) {
 
   map.fitBounds(geoLayer.getBounds());
 }
-
 
 
 
