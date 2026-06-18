@@ -33,13 +33,13 @@ Main file: `data/pontoons.geojson`
 | Field Name | Type | Description |
 |---|---|---|
 | `Index` | Integer | Unique identifier for each location; also used to link photos. |
-| `CHILL_AREA` | Number | Estimated chill area in square meters. |
+| `CHILL_AREA` | Integer | Estimated chill area in square meters. |
 | `SHADE` | Boolean coded as integer | `0` = no shade, `1` = shade available. |
-| `LAWN` | Categorical integer | Lawn or ground condition. `1` = mowed, `2` = medium height, `3` = high grass, `4` = sand/soil. |
+| `LAWN` | Integer | Lawn or ground condition. `1` = mowed, `2` = medium height, `3` = high grass, `4` = sand/soil. |
 | `LAWN_DATE` | Date | Date when the lawn or ground condition was recorded. |
 | `NUDISM_ARE` | Text | Indicates whether the location is within or near a nudism area. |
-| `DIST_FIRST` | Number | Distance to the nearest first aid station in meters. |
-| `DIST_FOOD` | Number | Distance to the nearest restaurant or bistro in meters. |
+| `DIST_FIRST` | Integer | Distance to the nearest first aid station in meters. |
+| `DIST_FOOD` | Integer | Distance to the nearest restaurant or bistro in meters. |
 | `NOTES` | Text | Additional observations or comments. |
 
 ## Photos
