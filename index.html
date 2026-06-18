@@ -117,8 +117,8 @@ onEachFeature: function (feature, layer) {
       autoPan: true,
       autoPanPadding: [20, 20]
     });
-  }
-}).addTo(map);
+    
+  .addTo(map);
 
   map.fitBounds(geoLayer.getBounds());
 }
