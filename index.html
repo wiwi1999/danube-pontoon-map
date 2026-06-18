@@ -81,7 +81,11 @@ fetch("data/pontoons.geojson")
     setupFilters();
   });
 
-function drawLayer(data) {
+function drawLayer(data, fit = false) {
+
+  // remember current map position
+  const currentCenter = map.getCenter();
+  const currentZoom = map.getZoom();
 
   // remove old layer if it exists
   if (geoLayer) {
@@ -116,6 +120,19 @@ function drawLayer(data) {
       });
     }
   }).addTo(map);
+
+  // only zoom to all points on first load
+  if (fit && geoLayer.getBounds().isValid()) {
+    map.fitBounds(geoLayer.getBounds());
+  }
+
+  // after filtering: restore previous map position
+  if (!fit) {
+    map.setView(currentCenter, currentZoom, {
+      animate: false
+    });
+  }
+}
 
   map.fitBounds(geoLayer.getBounds());
 }
