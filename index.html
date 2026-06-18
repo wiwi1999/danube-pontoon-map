@@ -66,17 +66,17 @@
       .then(data => {
         allData = data;
 
-        // Fit map only once, when the data first loads
+        // Fit map only once on first load
         drawLayer(allData, true);
 
         setupFilters();
       });
 
-    function drawLayer(data, fit = false) {
+    function drawLayer(data, fitMap) {
 
-      // remove old layer if it exists
+      // Remove old layer if it exists
       if (geoLayer) {
-        geoLayer.remove();
+        map.removeLayer(geoLayer);
       }
 
       geoLayer = L.geoJSON(data, {
@@ -108,9 +108,8 @@
         }
       }).addTo(map);
 
-      // This is the actual fix:
-      // only move/zoom the map on the first load, not when filters change
-      if (fit && geoLayer.getBounds().isValid()) {
+      // Only move/zoom the map on first load
+      if (fitMap === true) {
         map.fitBounds(geoLayer.getBounds());
       }
     }
@@ -127,7 +126,7 @@
         </a>
       `;
 
-      // prevent map interactions when clicking UI
+      // Prevent map interactions when clicking UI
       L.DomEvent.disableClickPropagation(div);
 
       return div;
@@ -171,9 +170,8 @@
                step="1">
       `;
 
-      // prevent map zoom when interacting with panel
+      // Prevent map zoom when interacting with panel
       L.DomEvent.disableClickPropagation(div);
-      L.DomEvent.disableScrollPropagation(div);
 
       return div;
     };
@@ -218,8 +216,8 @@
           })
         };
 
-        // Redraw layer without moving/zooming the map
-        drawLayer(filtered);
+        // Redraw filtered layer without moving the map
+        drawLayer(filtered, false);
       }
 
       shadeBox.addEventListener("change", applyFilters);
