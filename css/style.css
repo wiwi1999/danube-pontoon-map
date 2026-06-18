@@ -5,29 +5,37 @@ html, body {
   background: #e6f7fb;
 }
 
-/* Title section */
 #title {
-  height: 60px;
-  padding: 15px;
+  height: 72px;
+  padding: 0 28px;
   box-sizing: border-box;
-
-  font-family: Arial, sans-serif;
 
   display: flex;
   align-items: center;
 
-  background: linear-gradient(135deg, #005f73, #0a9396);
-  color: #ffffff;
+  font-family: Arial, sans-serif;
+
+  background: linear-gradient(135deg, #023047 0%, #0077b6 45%, #00b4d8 100%);
+  color: white;
+
+  box-shadow: 0 6px 22px rgba(2, 48, 71, 0.35);
+  position: relative;
+  z-index: 999;
 }
 
-/* Title text */
 #title h2 {
   margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
 }
 
-/* Map section */
+#title h2::before {
+  content: "🌊 ";
+}
+
 #map {
-  height: calc(100% - 60px);
+  height: calc(100% - 72px);
 }
 
 /* Link button */
