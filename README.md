@@ -63,16 +63,19 @@ Users can filter the locations by the following criteria:
 
 Each popup contains the following information:
 
-| Attribute          | Description                                                     |
-| ------------------ | --------------------------------------------------------------- |
-| Pontoon ID         | Unique number of the location                                   |
-| Chill Area         | Estimated available resting or chill area in square meters      |
-| Shade              | Information about shade availability                            |
-| Lawn               | Information about lawn availability                             |
-| First Aid Distance | Approximate distance to the nearest first aid station           |
-| Food Distance      | Approximate distance to the nearest restaurant, café, or bistro |
-| Notes              | Additional observations about the location                      |
-| Photo              | Image of the pontoon or surrounding area                        |
+## Attribute Description
+
+| Field Name | Type | Description |
+|---|---|---|
+| `Index` | Integer | Unique identifier for each pontoon or location. Also used to link photos to map features. |
+| `CHILL_AREA` | Number | Estimated available chill or resting area in square meters. |
+| `SHADE` | Boolean coded as integer | Shade availability. `0` = no shade, `1` = shade available. |
+| `RASEN_ZUSTAND` | Categorical integer | Lawn or ground condition recorded during field collection. `1` = mowed, `2` = medium height, `3` = high grass, `4` = sand/soil. |
+| `RASEN_DATUM` | Date | Date when the lawn or ground condition was recorded. |
+| `NUDISM_ARE` | Text | Indicates whether the location is within or near a nudism area. |
+| `DIST_FIRST` | Number | Distance to the nearest first aid station, measured in meters. |
+| `DIST_FOOD` | Number | Distance to the nearest restaurant or bistro, measured in meters. |
+| `NOTES` | Text | Additional observations or comments about the location. |
 
 ## Technologies Used
 
