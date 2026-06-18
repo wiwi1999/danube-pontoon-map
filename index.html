@@ -5,7 +5,6 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
@@ -15,245 +14,219 @@
     <h2>Cooling off on the Danube</h2>
   </div>
 
+  <div id="map"></div>
 
+  <script>
+    // Create map
+    const map = L.map('map').setView([48.23, 16.45], 12);
 
+    // Add base tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
 
-<div id="map"></div>
+    // Base map 1: OpenStreetMap
+    const osm = L.tileLayer(
+      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {
+        attribution: "&copy; OpenStreetMap contributors"
+      }
+    );
 
+    // Base map 2: Carto Light
+    const cartoLight = L.tileLayer(
+      "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+      {
+        attribution: "&copy; OpenStreetMap & CARTO"
+      }
+    );
 
+    // Base map 3: ESRI Satellite
+    const esriSat = L.tileLayer(
+      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      {
+        attribution: "Tiles &copy; Esri"
+      }
+    );
 
-<script>
-// Create map
-const map = L.map('map').setView([48.23, 16.45], 12);
-
-// Add base tile layer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
-
-// Base map 1: OpenStreetMap
-const osm = L.tileLayer(
-  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-  {
-    attribution: "&copy; OpenStreetMap contributors"
-  }
-);
-
-// Base map 2: Carto Light
-const cartoLight = L.tileLayer(
-  "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-  {
-    attribution: "&copy; OpenStreetMap & CARTO"
-  }
-);
-
-// Base map 3: ESRI Satellite
-const esriSat = L.tileLayer(
-  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-  {
-    attribution: "Tiles &copy; Esri"
-  }
-);
-
-
-// Add Basemaps to map
-const baseMaps = {
-  "OpenStreetMap": osm,
-  "Carto Light": cartoLight,
-  "ESRI Satellite": esriSat
-};
-
-L.control.layers(baseMaps).addTo(map);
-
-
-
-
-let allData;
-let geoLayer;
-
-fetch("data/pontoons.geojson")
-  .then(r => r.json())
-  .then(data => {
-    allData = data;
-
-    drawLayer(allData, true); 
-
-    setupFilters();
-  });
-
-function drawLayer(data, fit = false) {
-
-  // remember current map position
-  const currentCenter = map.getCenter();
-  const currentZoom = map.getZoom();
-
-  // remove old layer if it exists
-  if (geoLayer) {
-    geoLayer.remove();
-  }
-
-  geoLayer = L.geoJSON(data, {
-    pointToLayer: function (feature, latlng) {
-      return L.circleMarker(latlng, {
-        radius: 6,
-        color: "green",
-        fillOpacity: 0.8
-      });
-    },
-
-    onEachFeature: function (feature, layer) {
-      const index = feature.properties.Index;
-      const photoPath = `pictures/${index}.jpg`;
-
-      layer.bindPopup(`
-        <b>Pontoon ${feature.properties.Index}</b><br>
-        Chill: ${feature.properties.CHILL_AREA} sqm<br>
-        Shade: ${feature.properties.SHADE_TEXT}<br>
-        Lawn: ${feature.properties.LAWN_TEXT}<br>
-        Distance to First Aid Station: ${feature.properties.DIST_FIRST} m<br>
-        Distance to Restaurant/Bistro: ${feature.properties.DIST_FOOD} m<br>
-        Notes: ${feature.properties.NOTES}<br><br>
-        <img src="${photoPath}" width="220">
-      `, {
-        autoPan: true,
-        autoPanPadding: [20, 20]
-      });
-    }
-  }).addTo(map);
-
-  // only zoom to all points on first load
-  if (fit && geoLayer.getBounds().isValid()) {
-    map.fitBounds(geoLayer.getBounds());
-  }
-
-  // after filtering: restore previous map position
-  if (!fit) {
-    map.setView(currentCenter, currentZoom, {
-      animate: false
-    });
-  }
-}
-
-  map.fitBounds(geoLayer.getBounds());
-}
-
-
-
-//Link Box 
-const linkControl = L.control({ position: "bottomright" });
-
-linkControl.onAdd = function () {
-  const div = L.DomUtil.create("div");
-
-  div.innerHTML = `
-    <a href="https://github.com/wiwi1999/danube-pontoon-map/issues/new?title=Pontoon%20Update&assignee=wiwi1999" target="_blank" class="link-button">
-      Click here to send us <br> new information
-    </a>
-  `;
-
-  // prevent map interactions when clicking UI
-  L.DomEvent.disableClickPropagation(div);
-
-  return div;
-};
-
-linkControl.addTo(map);
-
-
-
-//Leaflet Style Filters
-
-const filterControl = L.control({ position: "topright" });
-
-filterControl.onAdd = function () {
-  const div = L.DomUtil.create("div", "filter-panel");
-
-  div.innerHTML = `
-    <b>Filters</b><br><br>
-
-    <label>
-      <input type="checkbox" id="shadeYes">
-      Shade
-    </label><br>
-
-    <label>
-      <input type="checkbox" id="lawnState">
-      Lawn
-    </label><br>
-
-    <label>
-      <input type="checkbox" id="fkkState">
-      Nudism Area
-    </label><br><br>
-
-    <label>
-      Min Chill Area: <span id="chillAreaLabel">0</span> sqm
-    </label><br>
-
-    <input type="range"
-           id="chillAreaSlider"
-           min="0"
-           max="300"
-           value="0"
-           step="1">
-  `;
-
-  // prevent map zoom when interacting with panel
-  L.DomEvent.disableClickPropagation(div);
-
-  return div;
-};
-
-
-// Unified Filters
-function setupFilters() {
-
-  const shadeBox = document.getElementById("shadeYes");
-  const lawnBox = document.getElementById("lawnState");
-  const fkkBox = document.getElementById("fkkState");
-  const slider = document.getElementById("chillAreaSlider");
-  const label = document.getElementById("chillAreaLabel");
-
-  function applyFilters() {
-
-    const chillArea = Number(slider.value);
-
-    label.innerText = chillArea;
-
-    const filtered = {
-      type: "FeatureCollection",
-      features: allData.features.filter(f => {
-
-        const shadeOK =
-          !shadeBox.checked || f.properties.SHADE === 1;
-
-        const lawnOK =
-          !lawnBox.checked || f.properties.LAWN === 0;
-
-        const fkkOK =
-          !fkkBox.checked || f.properties.NUDISM_ARE === "No";
-
-        const chillAreaValue =
-          Number(f.properties.CHILL_AREA);
-
-        const chillAreaOK =
-          chillAreaValue >= chillArea;
-
-        return shadeOK && fkkOK && lawnOK && chillAreaOK ;
-      })
+    // Add Basemaps to map
+    const baseMaps = {
+      "OpenStreetMap": osm,
+      "Carto Light": cartoLight,
+      "ESRI Satellite": esriSat
     };
 
-    drawLayer(filtered);
-  }
+    L.control.layers(baseMaps).addTo(map);
 
-  shadeBox.addEventListener("change", applyFilters);
-  lawnBox.addEventListener("change", applyFilters);
-  fkkBox.addEventListener("change", applyFilters);
-  slider.addEventListener("input", applyFilters);
-}
+    let allData;
+    let geoLayer;
 
-filterControl.addTo(map);
+    fetch("data/pontoons.geojson")
+      .then(r => r.json())
+      .then(data => {
+        allData = data;
 
+        // Fit map only once, when the data first loads
+        drawLayer(allData, true);
+
+        setupFilters();
+      });
+
+    function drawLayer(data, fit = false) {
+
+      // remove old layer if it exists
+      if (geoLayer) {
+        geoLayer.remove();
+      }
+
+      geoLayer = L.geoJSON(data, {
+        pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng, {
+            radius: 6,
+            color: "green",
+            fillOpacity: 0.8
+          });
+        },
+
+        onEachFeature: function (feature, layer) {
+          const index = feature.properties.Index;
+          const photoPath = `pictures/${index}.jpg`;
+
+          layer.bindPopup(`
+            <b>Pontoon ${feature.properties.Index}</b><br>
+            Chill: ${feature.properties.CHILL_AREA} sqm<br>
+            Shade: ${feature.properties.SHADE_TEXT}<br>
+            Lawn: ${feature.properties.LAWN_TEXT}<br>
+            Distance to First Aid Station: ${feature.properties.DIST_FIRST} m<br>
+            Distance to Restaurant/Bistro: ${feature.properties.DIST_FOOD} m<br>
+            Notes: ${feature.properties.NOTES}<br><br>
+            <img src="${photoPath}" width="220">
+          `, {
+            autoPan: true,
+            autoPanPadding: [20, 20]
+          });
+        }
+      }).addTo(map);
+
+      // This is the actual fix:
+      // only move/zoom the map on the first load, not when filters change
+      if (fit && geoLayer.getBounds().isValid()) {
+        map.fitBounds(geoLayer.getBounds());
+      }
+    }
+
+    // Link Box
+    const linkControl = L.control({ position: "bottomright" });
+
+    linkControl.onAdd = function () {
+      const div = L.DomUtil.create("div");
+
+      div.innerHTML = `
+        <a href="https://github.com/wiwi1999/danube-pontoon-map/issues/new?title=Pontoon%20Update&assignee=wiwi1999" target="_blank" class="link-button">
+          Click here to send us <br> new information
+        </a>
+      `;
+
+      // prevent map interactions when clicking UI
+      L.DomEvent.disableClickPropagation(div);
+
+      return div;
+    };
+
+    linkControl.addTo(map);
+
+    // Leaflet Style Filters
+    const filterControl = L.control({ position: "topright" });
+
+    filterControl.onAdd = function () {
+      const div = L.DomUtil.create("div", "filter-panel");
+
+      div.innerHTML = `
+        <b>Filters</b><br><br>
+
+        <label>
+          <input type="checkbox" id="shadeYes">
+          Shade
+        </label><br>
+
+        <label>
+          <input type="checkbox" id="lawnState">
+          Lawn
+        </label><br>
+
+        <label>
+          <input type="checkbox" id="fkkState">
+          Nudism Area
+        </label><br><br>
+
+        <label>
+          Min Chill Area: <span id="chillAreaLabel">0</span> sqm
+        </label><br>
+
+        <input type="range"
+               id="chillAreaSlider"
+               min="0"
+               max="300"
+               value="0"
+               step="1">
+      `;
+
+      // prevent map zoom when interacting with panel
+      L.DomEvent.disableClickPropagation(div);
+      L.DomEvent.disableScrollPropagation(div);
+
+      return div;
+    };
+
+    filterControl.addTo(map);
+
+    // Unified Filters
+    function setupFilters() {
+
+      const shadeBox = document.getElementById("shadeYes");
+      const lawnBox = document.getElementById("lawnState");
+      const fkkBox = document.getElementById("fkkState");
+      const slider = document.getElementById("chillAreaSlider");
+      const label = document.getElementById("chillAreaLabel");
+
+      function applyFilters() {
+
+        const chillArea = Number(slider.value);
+
+        label.innerText = chillArea;
+
+        const filtered = {
+          type: "FeatureCollection",
+          features: allData.features.filter(f => {
+
+            const shadeOK =
+              !shadeBox.checked || f.properties.SHADE === 1;
+
+            const lawnOK =
+              !lawnBox.checked || f.properties.LAWN === 0;
+
+            const fkkOK =
+              !fkkBox.checked || f.properties.NUDISM_ARE === "No";
+
+            const chillAreaValue =
+              Number(f.properties.CHILL_AREA);
+
+            const chillAreaOK =
+              chillAreaValue >= chillArea;
+
+            return shadeOK && fkkOK && lawnOK && chillAreaOK;
+          })
+        };
+
+        // Redraw layer without moving/zooming the map
+        drawLayer(filtered);
+      }
+
+      shadeBox.addEventListener("change", applyFilters);
+      lawnBox.addEventListener("change", applyFilters);
+      fkkBox.addEventListener("change", applyFilters);
+      slider.addEventListener("input", applyFilters);
+    }
   </script>
 
 </body>
