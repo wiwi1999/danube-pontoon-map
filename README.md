@@ -8,10 +8,10 @@ An interactive web map and enriched dataset of pontoons and recreational spots o
 
 The project provides both:
 
-* an interactive Leaflet web map for exploring pontoon locations, and
+* an interactive Leaflet web map for exploring pontoon locations
 * an enriched dataset that can be reused for spatial analysis, visualization, or further research.
 
-The original open data was extended with project-specific information such as shade availability, lawn or ground condition, estimated chill area, nudism area information, distances to nearby infrastructure, and photos.
+The original open data was extended with project-specific information such as shade availability, lawn condition, chill area, nudism area information, distances to nearby infrastructure and pictures.
 
 ## Web Map
 
@@ -21,11 +21,11 @@ Check out the interactive map here:
 
 The map includes:
 
-* interactive markers for pontoon locations,
-* popups with detailed information and photos,
-* filters for shade, lawn availability, nudism area information, and minimum chill area,
-* multiple basemaps, including OpenStreetMap, Carto Light, and ESRI Satellite,
-* a feedback button for suggesting updates or corrections.
+* interactive markers for pontoon locations
+* popups with detailed information and photos
+* filters for shade, lawn availability, nudism area information, and minimum chill area
+* multiple basemaps, including OpenStreetMap, Carto Light, and ESRI Satellite
+* a feedback button for suggesting updates or corrections
 
 ## Feedback and Contributions
 
@@ -40,41 +40,38 @@ When submitting feedback, please include:
 
 Possible contributions include:
 
-* corrected location information,
-* new or updated photos,
-* missing locations,
-* changed access conditions,
-* updated information about shade, lawn condition, food options, or first aid,
-* general comments or improvements.
+* corrected location information
+* new or updated photos
+* missing locations
+* updated information about shade, lawn condition, food options, or first aid
+* general comments or improvements
 
 ## Data Sources
 
-This project is based on the dataset **“Donauinsel Freizeiteinrichtungen Standorte Wien”**, published by the **City of Vienna / Stadt Wien** on the Austrian Open Government Data portal **data.gv.at** and licensed under **Creative Commons Attribution 4.0 International — CC BY 4.0**.
+This project is based on the dataset **“Donauinsel Freizeiteinrichtungen Standorte Wien”**, published by the **City of Vienna** on the Austrian Open Government Data portal **data.gv.at** and licensed under **Creative Commons Attribution 4.0 International — CC BY 4.0**.
 
 The original dataset was enriched with field-collected observations and additional analysis results.
 
-For the network analysis, **GIP.at** data was used to calculate approximate network-based distances to nearby infrastructure such as first aid stations, restaurants, bistros, paths, and access routes. GIP.at data is provided by **ÖVDAT** and is also licensed under **Creative Commons Attribution 4.0 International — CC BY 4.0**.
+For the network analysis, **GIP.at** data was used to calculate approximate network-based distances to nearby infrastructure such as first aid stations, and restaurants/bistros. GIP.at data is provided by **ÖVDAT** and is also licensed under **Creative Commons Attribution 4.0 International — CC BY 4.0**.
 
 ## Data Collection and Network Analysis
 
 The final dataset combines:
 
-* official open data from the City of Vienna,
-* field-collected observations,
-* manually added photos,
-* network analysis based on GIP.at / ÖVDAT data.
+* official open data from the City of Vienna
+* field-collected observations
+* manually added photos
+* network analysis based on ÖVDAT data
 
-Field observations include information about:
+Field observations were collected on the following dates: `06.,09.,13. June 2026`. They include information about:
 
-* shade availability,
-* lawn or ground condition,
-* estimated chill or resting area,
-* nudism area information,
-* photos.
+* shade availability
+* lawn or ground condition
+* estimated chill or resting area
+* nudism area information
+* pictures
 
 Network analysis was used to calculate approximate distances to nearby infrastructure such as first aid stations and restaurants or bistros. These distances should be used for orientation only.
-
-Field observations collected: `06.,09.,13. June 2026`
 
 ## Dataset Attributes
 
@@ -104,21 +101,18 @@ The dataset can be used to:
 
 ## Limitations
 
-Some information is based on observation or estimation and may change over time.
+Some information is based on observation or estimation and may change over time. Distances are approximate and should be used for orientation only. Shade availability can vary depending on the time of day, season, weather, and surrounding vegetation.
 
-Distances are approximate and should be used for orientation only. Shade availability can vary depending on the time of day, season, weather, and surrounding vegetation.
+## Created by
 
-## Credits
-
-Created by:
+This dataset was enriched and the webmap created by:
 
 * Pauline Fritz
 * Lukas Preining
 * Verena Damiani
 
-Students of the University of Vienna.
-
-This project uses open data from the **City of Vienna / Stadt Wien** and **GIP.at / ÖVDAT** data for network analysis.
+Students of the University of Vienna. 
+As part of the Research Seminar Spatial Data Science and GeoCommunication.
 
 ## License and Attribution
 
@@ -134,9 +128,9 @@ Additional project-specific observations, photos, and derived attributes were co
 
 Possible future improvements include:
 
-* adding more pontoons and recreational locations,
-* updating field observations over time,
-* improving photo coverage,
-* adding more filter options,
-* improving mobile usability,
+* adding more recreational locations
+* updating field observations over time
+* improving photo coverage
+* adding more filter options
+* improving mobile usability
 
