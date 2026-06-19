@@ -49,19 +49,11 @@ Possible contributions include:
 
 ## Data Sources
 
-The original data used in this project comes from the dataset **“Donauinsel Freizeiteinrichtungen Standorte Wien”**, published by the **City of Vienna / Stadt Wien** on the Austrian Open Government Data portal **data.gv.at**.
+This project is based on the dataset **“Donauinsel Freizeiteinrichtungen Standorte Wien”**, published by the **City of Vienna / Stadt Wien** on the Austrian Open Government Data portal **data.gv.at** and licensed under **Creative Commons Attribution 4.0 International — CC BY 4.0**.
 
-Original dataset:
+The original dataset was enriched with field-collected observations and additional analysis results.
 
-**Donauinsel Freizeiteinrichtungen Standorte Wien**
-Published by: **City of Vienna / Stadt Wien**
-License: **Creative Commons Attribution 4.0 International — CC BY 4.0**
-
-For this project, the original dataset was enriched with field-collected observations and additional analysis results.
-
-For the network analysis, **GIP.at** was used to calculate approximate network-based distances to nearby infrastructure such as first aid stations, restaurants, bistros, paths, and access routes.
-
-GIP data is provided by **ÖVDAT** and is available under the **Creative Commons Attribution 4.0 International — CC BY 4.0** license.
+For the network analysis, **GIP.at** data was used to calculate approximate network-based distances to nearby infrastructure such as first aid stations, restaurants, bistros, paths, and access routes. GIP.at data is provided by **ÖVDAT** and is also licensed under **Creative Commons Attribution 4.0 International — CC BY 4.0**.
 
 ## Data Collection and Network Analysis
 
