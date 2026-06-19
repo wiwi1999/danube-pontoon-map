@@ -13,17 +13,11 @@ The project provides both:
 
 The original open data was extended with project-specific information such as shade availability, lawn or ground condition, estimated chill area, nudism area information, distances to nearby infrastructure, and photos.
 
-## Dataset Information
-
-Dataset created: `ADD_DATE_HERE`
-Field observations collected: `06.,09.,13. June 2026`
-Last updated: `19.06.2026`
-
 ## Web Map
 
 Check out the interactive map here:
 
-**[Cooling Off on the Danube](ADD_MAP_LINK_HERE)**
+**[Cooling Off on the Danube](https://wiwi1999.github.io/danube-pontoon-map/)**
 
 The map includes:
 
@@ -87,6 +81,8 @@ Field observations include information about:
 * photos.
 
 Network analysis was used to calculate approximate distances to nearby infrastructure such as first aid stations and restaurants or bistros. These distances should be used for orientation only.
+
+Field observations collected: `06.,09.,13. June 2026`
 
 ## Dataset Attributes
 
