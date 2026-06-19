@@ -65,15 +65,6 @@ Network-based distances are approximate and should be used for orientation only.
 
 Users should always follow local signs, safety rules, and official regulations on site.
 
-## License
-
-This dataset is licensed under the **Creative Commons Attribution 4.0 International License — CC BY 4.0**.
-
-Changes were made to the original data. The dataset was enriched with field observations, additional attributes, photos, and network analysis results.
-
-Users of this dataset must credit the **City of Vienna / Stadt Wien** as the original data source.
-
-GIP.at data used for network analysis is provided by **ÖVDAT**.
 
 ## Authors
 
