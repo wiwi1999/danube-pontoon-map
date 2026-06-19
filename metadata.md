@@ -13,13 +13,14 @@ Last updated: `19. June 2026`
 ## Data Sources
 
 Original dataset: **Donauinsel Freizeiteinrichtungen Standorte Wien**
-* Publisher: **City of Vienna / Stadt Wien**
+* Publisher: City of Vienna / Stadt Wien
 * Source: `https://www.data.gv.at/datasets/4e8d237b-8bd4-4483-a85d-431784c543b9?locale=de`
-* License: **Creative Commons Attribution 4.0 International — CC BY 4.0**
+* License: Creative Commons Attribution 4.0 International — CC BY 4.0
 
-Network analysis data: **GIP.at**
-* Provider: **ÖVDAT**
-* License: **Creative Commons Attribution 4.0 International — CC BY 4.0**
+Network analysis data: **GIP.at***
+* Publisher: ÖVDAT
+* Source: https://gip.gv.at/
+* License: Creative Commons Attribution 4.0 International — CC BY 4.0
 
 ## Data Collection and Processing
 
