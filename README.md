@@ -96,7 +96,7 @@ Field observations collected: `06.,09.,13. June 2026`
 | `c_lon` | Number | Longitude coordinate used for map display. |
 | `lawn_date` | Date | Date when the lawn or ground condition was recorded. |
 | `lawn_text` | Text | Text version of the lawn or ground condition category, for example “mowed”, “medium height”, “high grass”, or “sand/soil”. |
-| `nudism_area` | Text | Indicates whether the location is within or near a nudism area. |
+| `nudism_area` | Text | Indicates whether the location is within a nudism area. |
 | `dist_first` | Number | Approximate network-based distance to the nearest first aid station, measured in meters. |
 | `dist_food` | Number | Approximate network-based distance to the nearest restaurant or bistro, measured in meters. |
 
