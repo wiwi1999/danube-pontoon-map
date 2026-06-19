@@ -102,8 +102,6 @@ Field observations collected: `06.,09.,13. June 2026`
 
 ## Usage
 
-## Usage
-
 The dataset can be used to:
 
 * explore recreational infrastructure on the Donauinsel,
