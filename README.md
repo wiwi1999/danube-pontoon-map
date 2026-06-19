@@ -86,19 +86,21 @@ Field observations collected: `06.,09.,13. June 2026`
 
 ## Dataset Attributes
 
-| Attribute     | Type                     | Description                                                                                 |
-| ------------- | ------------------------ | ------------------------------------------------------------------------------------------- |
-| `ORTBESCHR`   | Text                     | Original location description from the source dataset.                                      |
-| `CHILL_AREA`  | Number                   | Estimated available chill or resting area in square meters.                                 |
-| `SHADE`       | Boolean coded as integer | Shade availability. `0` = no shade, `1` = shade available.                                  |
-| `LAWN`        | Categorical integer      | Lawn or ground condition recorded during field collection.                                  |
-| `c_lat`       | Number                   | Latitude coordinate used for map display.                                                   |
-| `c_lon`       | Number                   | Longitude coordinate used for map display.                                                  |
-| `lawn_date`   | Date                     | Date when the lawn or ground condition was recorded.                                        |
-| `lawn_text`   | Text                     | Text version of the lawn or ground condition category.                                      |
-| `nudism_area` | Text                     | Indicates whether the location is within or near a nudism area.                             |
-| `dist_first`  | Number                   | Approximate network-based distance to the nearest first aid station, measured in meters.    |
-| `dist_food`   | Number                   | Approximate network-based distance to the nearest restaurant or bistro, measured in meters. |
+| Attribute | Type | Description |
+|---|---|---|
+| `ORTBESCHR` | Text | Original location description from the source dataset. |
+| `CHILL_AREA` | Number | Estimated available chill or resting area in square meters. |
+| `SHADE` | Boolean coded as integer | Shade availability. `0` = no shade, `1` = shade available. |
+| `LAWN` | Categorical integer | Lawn or ground condition recorded during field collection. `1` = mowed, `2` = medium height, `3` = high grass, `4` = sand/soil. |
+| `c_lat` | Number | Latitude coordinate used for map display. |
+| `c_lon` | Number | Longitude coordinate used for map display. |
+| `lawn_date` | Date | Date when the lawn or ground condition was recorded. |
+| `lawn_text` | Text | Text version of the lawn or ground condition category, for example “mowed”, “medium height”, “high grass”, or “sand/soil”. |
+| `nudism_area` | Text | Indicates whether the location is within or near a nudism area. |
+| `dist_first` | Number | Approximate network-based distance to the nearest first aid station, measured in meters. |
+| `dist_food` | Number | Approximate network-based distance to the nearest restaurant or bistro, measured in meters. |
+
+## Usage
 
 ## Usage
 
