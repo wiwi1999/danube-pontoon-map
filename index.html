@@ -49,6 +49,14 @@
     // Add default base map
     cartoLight.addTo(map);
 
+    map.attributionControl.addAttribution(
+    'Pontoon Location: City of Vienna (data.gv.at)'
+    );
+
+    map.attributionControl.addAttribution(
+    'Weather data: OpenWeather'
+    );
+
     // Add basemap control
     const baseMaps = {
       "Carto Light": cartoLight,
