@@ -9,6 +9,7 @@ This project uses and extends open data from:
   Source: https://www.data.gv.at/datasets/4e8d237b-8bd4-4483-a85d-431784c543b9?locale=de
 
 - **GIP.at**, provided by **ÖVDAT**, used for spatial analysis and distance calculations
+  Source: https://gip.gv.at/
 
 Changes were made to the original data. The dataset was enriched with field-collected observations, additional attributes, photos, and spatial analysis results.
 
