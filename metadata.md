@@ -12,14 +12,14 @@ Last updated: `19. June 2026`
 
 ## Data Sources
 
-*Original dataset: **Donauinsel Freizeiteinrichtungen Standorte Wien**
-*Publisher: **City of Vienna / Stadt Wien**
-*Source: `https://www.data.gv.at/datasets/4e8d237b-8bd4-4483-a85d-431784c543b9?locale=de`
-*License: **Creative Commons Attribution 4.0 International — CC BY 4.0**
+* Original dataset: **Donauinsel Freizeiteinrichtungen Standorte Wien**
+* Publisher: **City of Vienna / Stadt Wien**
+* Source: `https://www.data.gv.at/datasets/4e8d237b-8bd4-4483-a85d-431784c543b9?locale=de`
+* License: **Creative Commons Attribution 4.0 International — CC BY 4.0**
 
-*Network analysis data: **GIP.at**
-*Provider: **ÖVDAT**
-*License: **Creative Commons Attribution 4.0 International — CC BY 4.0**
+* Network analysis data: **GIP.at**
+* Provider: **ÖVDAT**
+* License: **Creative Commons Attribution 4.0 International — CC BY 4.0**
 
 ## Data Collection and Processing
 
@@ -54,19 +54,13 @@ Main file: `data/pontoons.geojson`
 ## Photos
 
 Photos are stored in the `pictures/` folder and linked to the corresponding locations through the dataset.
-
 Example: a photo named `pictures/5.jpg` belongs to the corresponding feature or pontoon location with the matching identifier used in the project.
 
 ## Limitations
 
-The dataset may not include every pontoon or recreational facility along the Donauinsel. Some information is based on observation or estimation and may change over time.
-
-Network-based distances are approximate and should be used for orientation only. Shade availability can vary depending on the time of day, season, weather, and surrounding vegetation.
-
-Users should always follow local signs, safety rules, and official regulations on site.
-
+Some information is based on observation or estimation and may change over time.Network-based distances are approximate and should be used for orientation only. Shade availability can vary depending on the time of day, season, weather, and surrounding vegetation.
 
 ## Authors
 
-*Pauline Fritz, Lukas Preining, Verena Damiani
-*Students of the University of Vienna
+* Pauline Fritz, Lukas Preining, Verena Damiani
+* Students of the University of Vienna
