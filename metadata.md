@@ -22,8 +22,6 @@ Network analysis data:
 ÖVDAT. (2026). GIP / Graphenintegrations-Plattform Österreich [Data set]. data.gv.at.
 https://www.data.gv.at/katalog/dataset/3fefc838-791d-4dde-975b-a4131a54e7c5
 
-Additional GIP information:
-https://gip.gv.at/
 
 ## License and Attribution
 
@@ -34,11 +32,11 @@ https://creativecommons.org/licenses/by/4.0/
 
 Attribution for the City of Vienna dataset:
 
-> Datenquelle: Stadt Wien – data.wien.gv.at
+> Stadt Wien – data.wien.gv.at
 
 Attribution for the GIP dataset:
 
-> Datenquelle: ÖVDAT/GIP.at – Graphenintegrations-Plattform Österreich
+> ÖVDAT/GIP.at – Graphenintegrations-Plattform Österreich
 
 This derived dataset includes changes to the original data. It was enriched with field-collected observations, additional attributes, photos, and spatial analysis results.
 
