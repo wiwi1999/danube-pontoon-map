@@ -27,11 +27,16 @@ The map includes:
 * multiple basemaps, including OpenStreetMap, Carto Light, and ESRI Satellite
 * a feedback button for suggesting updates or corrections
 
-## Data Sources
+## Data Sources and Attribution
 
 This project uses and extends open data from the City of Vienna and ÖVDAT/GIP.at.
 
 The base dataset is “Donauinsel Freizeiteinrichtungen Standorte Wien” by Stadt Wien, published via data.gv.at. GIP / Graphenintegrations-Plattform Österreich data by ÖVDAT, published via data.gv.at,  was used for spatial analysis and network-based distance calculations.
+
+Attribution:
+
+Stadt Wien - data.wien.gv.at
+ÖVDAT/GIP.at - Graphenintegrations-Plattform Österreich
 
 Full source citations, license information, and attribution requirements are provided in the metadata and license files.
 
@@ -84,19 +89,24 @@ The dataset can be used to:
 
 Some information is based on observation or estimation and may change over time. Distances are approximate and should be used for orientation only. Shade availability can vary depending on the time of day, season, weather, and surrounding vegetation.
 
-## License and Attribution
-
-This project is based on open data from the **City of Vienna / Stadt Wien**, dataset **“Donauinsel Freizeiteinrichtungen Standorte Wien”**, licensed under **Creative Commons Attribution 4.0 International — CC BY 4.0**.
-
-Users of this dataset must credit the **City of Vienna / Stadt Wien** as the original data source.
-
-GIP.at data used for network analysis is provided by **ÖVDAT** and licensed under **Creative Commons Attribution 4.0 International — CC BY 4.0**.
-
-Additional project-specific observations, photos, and derived attributes were collected and added by the project team.
-
 ## Feedback and Contributions
 
-The map includes a GitHub issue button that allows users to suggest updates or report problems.
+The map includes a GitHub issue button that allows users to License and Attribution
+The original datasets are licensed under Creative Commons Attribution 4.0 International — CC BY 4.0.
+
+License text: https://creativecommons.org/licenses/by/4.0/
+
+Attribution for the City of Vienna dataset:
+
+Stadt Wien – data.wien.gv.at
+
+Attribution for the GIP dataset:
+
+ÖVDAT/GIP.at – Graphenintegrations-Plattform Österreich
+
+This derived dataset includes changes to the original data. It was enriched with field-collected observations, additional attributes, photos, and spatial analysis results.
+
+Users of this dataset must credit this derived dataset as well as the original data sources listed above.suggest updates or report problems.
 
 When submitting feedback, please include:
 
