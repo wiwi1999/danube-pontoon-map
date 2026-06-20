@@ -91,23 +91,6 @@ Some information is based on observation or estimation and may change over time.
 
 ## Feedback and Contributions
 
-The map includes a GitHub issue button that allows users to License and Attribution
-The original datasets are licensed under Creative Commons Attribution 4.0 International — CC BY 4.0.
-
-License text: https://creativecommons.org/licenses/by/4.0/
-
-Attribution for the City of Vienna dataset:
-
-Stadt Wien – data.wien.gv.at
-
-Attribution for the GIP dataset:
-
-ÖVDAT/GIP.at – Graphenintegrations-Plattform Österreich
-
-This derived dataset includes changes to the original data. It was enriched with field-collected observations, additional attributes, photos, and spatial analysis results.
-
-Users of this dataset must credit this derived dataset as well as the original data sources listed above.suggest updates or report problems.
-
 When submitting feedback, please include:
 
 * the pontoon number or location,
