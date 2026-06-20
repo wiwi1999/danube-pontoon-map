@@ -27,32 +27,13 @@ The map includes:
 * multiple basemaps, including OpenStreetMap, Carto Light, and ESRI Satellite
 * a feedback button for suggesting updates or corrections
 
-## Feedback and Contributions
-
-The map includes a GitHub issue button that allows users to suggest updates or report problems.
-
-When submitting feedback, please include:
-
-* the pontoon number or location,
-* the attribute you want to update,
-* any relevant notes or observations,
-* optional updated photos.
-
-Possible contributions include:
-
-* corrected location information
-* new or updated photos
-* missing locations
-* updated information about shade, lawn condition, food options, or first aid
-* general comments or improvements
-
 ## Data Sources
 
-This project is based on the dataset **“Donauinsel Freizeiteinrichtungen Standorte Wien”**, published by the **City of Vienna** on the Austrian Open Government Data portal **data.gv.at** and licensed under **Creative Commons Attribution 4.0 International — CC BY 4.0**.
+This project uses and extends open data from the City of Vienna and ÖVDAT/GIP.at.
 
-The original dataset was enriched with field-collected observations and additional analysis results.
+The base dataset is “Donauinsel Freizeiteinrichtungen Standorte Wien” by Stadt Wien, published via data.gv.at. GIP / Graphenintegrations-Plattform Österreich data by ÖVDAT, published via data.gv.at,  was used for spatial analysis and network-based distance calculations.
 
-For the network analysis, **GIP.at** data was used to calculate approximate network-based distances to nearby infrastructure such as first aid stations, and restaurants/bistros. GIP.at data is provided by **ÖVDAT** and is also licensed under **Creative Commons Attribution 4.0 International — CC BY 4.0**.
+Full source citations, license information, and attribution requirements are provided in the metadata and license files.
 
 ## Data Collection and Network Analysis
 
@@ -75,19 +56,19 @@ Network analysis was used to calculate approximate distances to nearby infrastru
 
 ## Dataset Attributes
 
-| Attribute | Type | Description |
-|---|---|---|
-| `ORTBESCHR` | Text | Original location description from the source dataset. |
-| `CHILL_AREA` | Number | Estimated available chill or resting area in square meters. |
-| `SHADE` | Boolean coded as integer | Shade availability. `0` = no shade, `1` = shade available. |
-| `LAWN` | Categorical integer | Lawn or ground condition recorded during field collection. `1` = mowed, `2` = medium height, `3` = high grass, `4` = sand/soil. |
-| `c_lat` | Number | Latitude coordinate used for map display. |
-| `c_lon` | Number | Longitude coordinate used for map display. |
-| `lawn_date` | Date | Date when the lawn or ground condition was recorded. |
-| `lawn_text` | Text | Text version of the lawn or ground condition category, for example “mowed”, “medium height”, “high grass”, or “sand/soil”. |
-| `nudism_area` | Text | Indicates whether the location is within a nudism area. |
-| `dist_first` | Number | Approximate network-based distance to the nearest first aid station, measured in meters. |
-| `dist_food` | Number | Approximate network-based distance to the nearest restaurant or bistro, measured in meters. |
+| Attribute     | Type                     | Description                                                                                                                     |
+| ------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `ORTBESCHR`   | Text                     | Original location description from the source dataset.                                                                          |
+| `CHILL_AREA`  | Number                   | Estimated available chill or resting area in square meters.                                                                     |
+| `SHADE`       | Boolean coded as integer | Shade availability. `0` = no shade, `1` = shade available.                                                                      |
+| `LAWN`        | Categorical integer      | Lawn or ground condition recorded during field collection. `1` = mowed, `2` = medium height, `3` = high grass, `4` = sand/soil. |
+| `c_lat`       | Number                   | Latitude coordinate used for map display.                                                                                       |
+| `c_lon`       | Number                   | Longitude coordinate used for map display.                                                                                      |
+| `lawn_date`   | Date                     | Date when the lawn or ground condition was recorded.                                                                            |
+| `lawn_text`   | Text                     | Text version of the lawn or ground condition category, for example “mowed”, “medium height”, “high grass”, or “sand/soil”.      |
+| `nudism_area` | Text                     | Indicates whether the location is within a nudism area.                                                                         |
+| `dist_first`  | Number                   | Approximate network-based distance to the nearest first aid station, measured in meters.                                        |
+| `dist_food`   | Number                   | Approximate network-based distance to the nearest restaurant or bistro, measured in meters.                                     |
 
 ## Usage
 
@@ -103,17 +84,6 @@ The dataset can be used to:
 
 Some information is based on observation or estimation and may change over time. Distances are approximate and should be used for orientation only. Shade availability can vary depending on the time of day, season, weather, and surrounding vegetation.
 
-## Created by
-
-This dataset was enriched and the webmap created by:
-
-* Pauline Fritz
-* Lukas Preining
-* Verena Damiani
-
-Students of the University of Vienna. 
-As part of the Research Seminar Spatial Data Science and GeoCommunication.
-
 ## License and Attribution
 
 This project is based on open data from the **City of Vienna / Stadt Wien**, dataset **“Donauinsel Freizeiteinrichtungen Standorte Wien”**, licensed under **Creative Commons Attribution 4.0 International — CC BY 4.0**.
@@ -123,6 +93,25 @@ Users of this dataset must credit the **City of Vienna / Stadt Wien** as the ori
 GIP.at data used for network analysis is provided by **ÖVDAT** and licensed under **Creative Commons Attribution 4.0 International — CC BY 4.0**.
 
 Additional project-specific observations, photos, and derived attributes were collected and added by the project team.
+
+## Feedback and Contributions
+
+The map includes a GitHub issue button that allows users to suggest updates or report problems.
+
+When submitting feedback, please include:
+
+* the pontoon number or location,
+* the attribute you want to update,
+* any relevant notes or observations,
+* optional updated photos.
+
+Possible contributions include:
+
+* corrected location information
+* new or updated photos
+* missing locations
+* updated information about shade, lawn condition, food options, or first aid
+* general comments or improvements
 
 ## Future Plans
 
@@ -134,3 +123,13 @@ Possible future improvements include:
 * adding more filter options
 * improving mobile usability
 
+## Created by
+
+This dataset was enriched and the webmap created by:
+
+* Pauline Fritz
+* Lukas Preining
+* Verena Damiani
+
+Students of the University of Vienna.
+As part of the Research Seminar Spatial Data Science and GeoCommunication.
