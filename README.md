@@ -35,8 +35,8 @@ The base dataset is “Donauinsel Freizeiteinrichtungen Standorte Wien” by Sta
 
 Attribution:
 
-Stadt Wien - data.wien.gv.at
-ÖVDAT/GIP.at - Graphenintegrations-Plattform Österreich
+* Stadt Wien - data.wien.gv.at
+* ÖVDAT/GIP.at - Graphenintegrations-Plattform Österreich
 
 Full source citations, license information, and attribution requirements are provided in the metadata and license files.
 
