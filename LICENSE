@@ -4,23 +4,22 @@ This dataset is licensed under the **Creative Commons Attribution 4.0 Internatio
 
 This project uses and extends open data from:
 
-- **City of Vienna / Stadt Wien**, published through **data.gv.at**  
-  Original dataset: **Donauinsel Freizeiteinrichtungen Standorte Wien**  
-  Source: https://www.data.gv.at/datasets/4e8d237b-8bd4-4483-a85d-431784c543b9?locale=de
+- Stadt Wien. (2025). *Donauinsel Freizeiteinrichtungen Standorte Wien* [Data set]. data.gv.at.  
+  https://www.data.gv.at/datasets/4e8d237b-8bd4-4483-a85d-431784c543b9?locale=de
 
-- **GIP.at**, provided by **ÖVDAT**, used for spatial analysis and distance calculations
-  Source: https://gip.gv.at/
+- ÖVDAT. (2026). *GIP / Graphenintegrations-Plattform Österreich* [Data set]. data.gv.at.  
+  https://www.data.gv.at/katalog/dataset/3fefc838-791d-4dde-975b-a4131a54e7c5
 
 Changes were made to the original data. The dataset was enriched with field-collected observations, additional attributes, photos, and spatial analysis results.
 
 You are free to:
 
-- share — copy and redistribute the material in any medium or format
-- adapt — remix, transform, and build upon the material for any purpose, even commercially
+- share - copy and redistribute the material in any medium or format
+- adapt - remix, transform, and build upon the material for any purpose, even commercially
 
 Under the following terms:
 
-- attribution — you must give appropriate credit, provide a link to the license, and indicate if changes were made.
+- attribution - you must give appropriate credit, provide a link to the license, and indicate if changes were made. Attribution should include this derived dataset as well as the original data sources listed above.
 
 License text:  
 https://creativecommons.org/licenses/by/4.0/deed.en
